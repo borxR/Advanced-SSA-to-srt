@@ -1,8 +1,8 @@
 
 
-def convert_ssa_to_srt(ssa_file_path, srt_file_path):
-    with open(ssa_file_path, 'r', encoding='utf-8-sig') as f:
-        ssa_lines = f.readlines()
+def convert_ssa_to_srt(ass_data):
+    
+    ssa_lines = f.splitlines()
 
     srt_lines = []
     current_line_number = 1
@@ -23,9 +23,8 @@ def convert_ssa_to_srt(ssa_file_path, srt_file_path):
                 srt_lines.append(subtitle_line)
                 srt_lines.append("\n\n")
                 current_line_number += 1
-
-    with open(srt_file_path, 'w') as f:
-        f.writelines(srt_lines)
+                
+    return ''.join(srt_lines)
 
 def convert_ssa_time_to_seconds(ssa_time):
     h, m, s = ssa_time.split(':')
@@ -40,4 +39,4 @@ def convert_seconds_to_srt_time(seconds):
     return f"{h:02d}:{m:02d}:{s:02d},{ms:03d}"
 
 
-convert_ssa_to_srt('path to ass file','output path.srt')
+convert_ssa_to_srt(ass_data)
